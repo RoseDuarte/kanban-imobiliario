@@ -191,6 +191,7 @@ footer {
     header {
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         height: auto; 
         padding: 20px 0;
     }
@@ -208,9 +209,9 @@ footer {
     }
 
     .logout-btn {
-        font-size: 0.8rem;
-        align-self: flex-end;
-
+      width: 90%;
+       margin: 20px 0 0 0;
+       font-size: 0.8rem;
     }
 
     .controls-container {
@@ -232,7 +233,11 @@ footer {
 
     .column {
         width: 100%;
-        min-height: 300px;
+        min-height: 200px;
+    }
+
+    .column h2 {
+        font-size: 20px;
     }
 
     .card {

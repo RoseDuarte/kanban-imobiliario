@@ -112,6 +112,9 @@ function createdCard(text, columnId) {
         });
       };
 
+      deleteBtn.addEventListener('touchstart', (e) => e.stopPropagation());
+      deleteBtn.addEventListener('mousedown', (e) => e.stopPropagation());
+
     newCard.appendChild(cardtext);
     newCard.appendChild(deleteBtn);
 
