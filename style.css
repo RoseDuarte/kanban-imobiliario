@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #273E68;
+    height: 70px;
+}
+
+header .logo {
+    width: 180px;
+    padding-left: 20px;
+}
+
+header .slogan {
+    font-size: 1rem;
+    color: #ffffff;
+    padding-right: 40px;
+}
+
+.logout-btn {
+    margin-right: 40px;
+    padding: 8px 16px;
+    background-color: #d11a2a;
+    color: #FFF;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #a50d20;
+}
+
+.container {
+    flex: 1;
+    margin: 0 40px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    
+}
+
+.controls-container {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.controls-container input,
+.controls-container select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    flex: 1;
+}
+
+
+
+.controls-container button {
+    padding: 10px 20px;
+    background-color: #273E68;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.controls-container button:hover {
+    background-color: #142c57;
+}
+
+.board {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.column {
+    padding: 15px;
+    width: 300px;
+    min-height: 450px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#to-do {
+    background-color: #C9DDF8;
+}
+
+#in-progress {
+    background-color: #DBEAE9;
+}
+
+#done {
+    background-color: #E8EBEC;
+}
+
+.column h2 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.card {
+    background-color: #ffffff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: move;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+footer {
+    text-align: center;
+    background-color: #353D46;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    float: right;
+    margin-left: 10px;
+    padding: 0;
+}
+
+.delete-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.delete-btn:hover .delete-icon {
+    filter: brightness(0) saturate(100%) invert(17%) sepia(92%) saturate(7464%) hue-rotate(356deg) brightness(92%) contrast(107%);
+}
+
+
+
+
+@media (max-width: 700px) {
+
+    html, body {
+        min-height: 100vh; /* Garante que o body ocupe o mínimo possível */
+    }
+
+    .container {
+        margin: 0 30px;
+        
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        height: auto; 
+        padding: 20px 0;
+    }
+
+    header .logo {
+        width: 150px;
+        padding-left: 0;
+    }
+
+    header .slogan {
+        font-size: 0.9rem;
+        padding-right: 0;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .logout-btn {
+        font-size: 0.8rem;
+        align-self: flex-end;
+
+    }
+
+    .controls-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .controls-container input,
+    .controls-container select,
+    .controls-container button {
+        width: 100%;
+    }
+
+    .board {
+        flex-direction: column;
+        gap: 10px;
+        padding-bottom: 20px;
+    }
+
+    .column {
+        width: 100%;
+        min-height: 300px;
+    }
+
+    .card {
+        font-size: 0.9rem;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+}
+

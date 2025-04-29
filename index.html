@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Kaban Imobiliário - Organize sua rotina imobiliária com agilidade</title>
+</head>
+<body>
+    <header>
+        <img class="logo" src="assets/logo.png" alt="logo">
+        <p class="slogan">Organize sua rotina imobiliária com agilidade.</p>
+        <button class="logout-btn" id="logout-btn">Sair</button>
+    </header>
+
+    <div class="container">
+        <section class="controls">
+            <div class="controls-container">
+                <input type="text" id="new-task" placeholder="Digite uma nova tarefa...">
+                <select id="column-select">
+                    <option value="to-do">A fazer</option>
+                    <option value="in-progress">Em andamento</option>
+                    <option value="done">Concluído</option>
+                </select>
+                <button id="add-task-btn">Adicionar Card</button>
+            </div>
+        </section>
+    
+        <section class="board">
+            <div class="column" id="to-do">
+                <h2>A fazer</h2>
+            </div>
+    
+            <div class="column" id="in-progress">
+                <h2>Em andamento</h2>
+            </div>
+    
+            <div class="column" id="done">
+                <h2>Concluído</h2>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>@2025 Kaban Imobiliário. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+    <script src="./protect.js"></script>
+</body>
+</html>
