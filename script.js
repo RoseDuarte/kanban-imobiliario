@@ -94,6 +94,9 @@ function createdCard(text, columnId) {
 
     deleteBtn.appendChild(deleteIcon);
 
+    deleteBtn.addEventListener('mousedown', (e) => e.stopPropagation());
+    deleteBtn.addEventListener('touchstart', (e) => e.stopPropagation());
+
     deleteBtn.onclick = function () {
         Swal.fire({
           title: 'Tem certeza?',
