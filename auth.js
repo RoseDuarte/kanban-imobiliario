@@ -42,6 +42,16 @@ if(loginBtn) {
         const email = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
 
+        if(!email || !password) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Campos obrigatórios',
+            text: 'Por favor, preencha o e-mail e a senha.',
+            confirmButtonColor: '#273E68'
+          });
+          return;
+        }
+
         const storedUser = JSON.parse(localStorage.getItem('user'));
 
         if(!storedUser) {

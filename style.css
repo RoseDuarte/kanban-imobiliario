@@ -137,10 +137,25 @@ header .slogan {
 .card {
     background-color: #ffffff;
     margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 12px 14px;
+    border-radius: 8px;
     cursor: move;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card span {
+    flex: 1;
+    font-size: 0.95rem;
+    word-break: break-word;
+}
+
+.card input[type="checkbox"] {
+    margin-left: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
 }
 
 .dragging {
@@ -160,18 +175,29 @@ footer {
     background: none;
     border: none;
     cursor: pointer;
-    float: right;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* float: right;
     margin-left: 10px;
-    padding: 0;
+    padding: 0; */
 }
 
 .delete-icon {
     width: 20px;
     height: 20px;
+    transition: filter 0.3 ease;
 }
 
 .delete-btn:hover .delete-icon {
     filter: brightness(0) saturate(100%) invert(17%) sepia(92%) saturate(7464%) hue-rotate(356deg) brightness(92%) contrast(107%);
+}
+
+#new-task:focus {
+    border-color: #273E68;
+    outline: none;
+    box-shadow: 0 0 4px rgba(39, 62, 104, 0.4);
 }
 
 
