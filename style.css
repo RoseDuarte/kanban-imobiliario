@@ -240,6 +240,10 @@ footer {
         font-size: 0.8rem;
     }
 
+    .controls {
+        width: 90%;
+    }
+
     .controls-container {
         flex-direction: column;
         gap: 10px;
