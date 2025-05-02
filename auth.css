@@ -120,6 +120,7 @@ button:hover {
     line-height: 150%;
     text-align: center;
     color: #FFF;
+    max-width: 90%;
 }
 
 @media (max-width: 700px) {
