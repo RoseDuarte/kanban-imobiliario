@@ -66,41 +66,58 @@ header .slogan {
 }
 
 .controls-container {
-    background: #ffffff;
+    background: #fff;
     border: 1px solid #ddd;
-    padding: 15px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    gap: 10px;
     width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.controls-container input,
-.controls-container select {
+.task-input {
+    width: 100%;
     padding: 10px;
+    font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 1rem;
-    flex: 1;
 }
 
+.task-details {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
 
+.task-details input,
+.task-details select {
+    flex: 1;
+    min-width: 100px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
 
-.controls-container button {
+.add-button {
+    align-self: center;
     padding: 10px 20px;
-    background-color: #273E68;
-    color: #ffffff;
+    background-color:#273E68;
+    color: #fff;
     border: none;
     border-radius: 6px;
     font-size: 1rem;
-    cursor: pointer;
+    width: 100%;
     transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
-.controls-container button:hover {
-    background-color: #142c57;
+.add-button:hover {
+    background-color: #1b2c4d;
 }
 
 .board {
@@ -112,7 +129,8 @@ header .slogan {
 .column {
     padding: 15px;
     width: 300px;
-    min-height: 450px;
+    min-height: 100px;
+    height: auto;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -135,15 +153,15 @@ header .slogan {
 }
 
 .card {
-    background-color: #ffffff;
-    margin: 10px 0;
-    padding: 12px 14px;
-    border-radius: 8px;
-    cursor: move;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom: 12px;
+    max-width: 300px;
 }
 
 .card span {
@@ -160,6 +178,44 @@ header .slogan {
 
 .dragging {
     opacity: 0.5;
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.left-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-text {
+    font-size: 16px;
+    margin-bottom: 4px;
+    word-break: break-word;
+}
+
+.meta-info {
+    display: flex;
+    gap: 8px;
+    font-size: 13px;
+    color: #666;
+}
+
+.right-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 6px;
+}
+
+.task-checkbox {
+    transform: scale(1.2);
+    cursor: pointer;
 }
 
 footer {
@@ -201,8 +257,6 @@ footer {
 }
 
 
-
-
 @media (max-width: 700px) {
 
     html, body {
@@ -211,7 +265,6 @@ footer {
 
     .container {
         margin: 0 30px;
-        
     }
 
     header {
@@ -249,9 +302,18 @@ footer {
         gap: 10px;
     }
 
-    .controls-container input,
-    .controls-container select,
-    .controls-container button {
+    .task-details {
+       display: flex;
+       flex-direction: column;
+    }
+
+    .task-details input,
+    .task-details select {
+        width: 100%;
+    }
+
+
+    .add-button {
         width: 100%;
     }
 
@@ -263,7 +325,9 @@ footer {
 
     .column {
         width: 100%;
-        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .column h2 {
@@ -272,6 +336,9 @@ footer {
 
     .card {
         font-size: 0.9rem;
+        width: 90%;
+        max-width: 100%;
+        margin-bottom: 15px;
     }
 
     footer {

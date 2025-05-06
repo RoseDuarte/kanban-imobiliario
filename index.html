@@ -20,12 +20,18 @@
     <div class="container">
         <section class="controls">
             <div class="controls-container">
-                <input type="text" id="new-task" placeholder="Digite uma nova tarefa...">
-                <select id="column-select">
-                    <option value="to-do">A fazer</option>
-                    <option value="in-progress">Em andamento</option>
-                </select>
-                <button id="add-task-btn">Adicionar Card</button>
+                <input class="task-input" type="text" id="new-task" placeholder="Digite uma nova tarefa...">
+                
+                <div class="task-details">
+                    <input type="date" id="taskDate">
+                    <input type="time" id="taskTime">
+                    <select id="column-select">
+                        <option value="to-do">A fazer</option>
+                        <option value="in-progress">Em andamento</option>
+                    </select>
+                </div>
+                
+                <button class="add-button" id="add-task-btn">Adicionar Card</button>
             </div>
         </section>
     

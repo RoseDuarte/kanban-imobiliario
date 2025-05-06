@@ -37,10 +37,24 @@ function enableDragAndDrop() {
 
             if(fromColumnId === toColumn) return;
 
-            const taskText = dragging.querySelector('span')?.textContent;
-            dragging.remove();
+            const taskText = dragging.querySelector('span')?.textContent || "";
 
-            createdCard(taskText, toColumn);
+            const dateSpan = dragging.querySelector('.meta-info small:nth-child(1)');
+            const timeSpan = dragging.querySelector('.meta-info small:nth-child(2)');
+
+            let dateText = "";
+            let timeText = "";
+
+            if(dateSpan) {
+                dateText = dateSpan.getAttribute('data-date') || '';
+            }
+
+            if(timeSpan && timeSpan.textContent.includes('⏰')) {
+                timeText = timeSpan.textContent.replace('⏰ ', '');
+            }
+        
+            dragging.remove();
+            createdCard(taskText, toColumn, dateText, timeText);
             saveToLocalStorage();
         });
     });
@@ -51,6 +65,8 @@ enableDragAndDrop();
 const addTaskBtn = document.getElementById('add-task-btn');
 addTaskBtn.addEventListener('click', () => {
     const taskText = document.getElementById('new-task').value;
+    const taskDate = document.getElementById('taskDate').value;
+    const taskTime = document.getElementById('taskTime').value;
     const selectedColumnId = document.getElementById('column-select').value;
 
     if (taskText.trim() === "") {
@@ -63,13 +79,17 @@ addTaskBtn.addEventListener('click', () => {
         return;
     }
 
-    createdCard(taskText, selectedColumnId);
+    createdCard(taskText, selectedColumnId, taskDate, taskTime);
+
     document.getElementById('new-task').value = "";
-    document.getElementById('new-task').focus(); // ✅ foca de volta no campo
+    document.getElementById('taskDate').value = "";
+    document.getElementById('taskTime').value = "";
+    document.getElementById('new-task').focus(); 
+    
     saveToLocalStorage();
 });
 
-function createdCard(text, columnId) {
+function createdCard(text, columnId, date = '', time = '') {
     const newCard = document.createElement('div');
     newCard.className = 'card';
 
@@ -78,36 +98,70 @@ function createdCard(text, columnId) {
     }
 
     const contentContainer = document.createElement('div');
-    contentContainer.style.display = 'flex';
-    contentContainer.style.justifyContent = 'space-between';
-    contentContainer.style.alignItems = 'center';
-    contentContainer.style.width = '100%';
+    contentContainer.className = 'content-container';
+
+    const leftContent = document.createElement('div');
+    leftContent.className = 'left-content';
 
     const cardText = document.createElement('span');
+    cardText.className = 'card-text';
     cardText.textContent = text;
-    contentContainer.appendChild(cardText);
+    leftContent.appendChild(cardText);
+
+    const metaInfo = document.createElement('div');
+    metaInfo.className = 'meta-info';
+
+    if(date) {
+        const [year, month, day] = date.split('-');
+        const formattedDate = `${day}/${month}/${year}`;
+
+        const dateSpan = document.createElement('small');
+        dateSpan.textContent = `🗓️ ${formattedDate}`;
+        dateSpan.setAttribute('data-date', date);
+
+        metaInfo.appendChild(dateSpan);
+    }
+
+    if(time) {
+        const timeSpan = document.createElement('small');
+        timeSpan.textContent = `⏰ ${time}`;
+        metaInfo.appendChild(timeSpan);
+    }
+
+    leftContent.appendChild(metaInfo);
+    contentContainer.appendChild(leftContent);
+
+    const rightContent = document.createElement('div');
+    rightContent.className = 'right-content';
 
     if (columnId === 'to-do' || columnId === 'in-progress') {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.style.transform = 'scale(1.2)';
-        checkbox.style.cursor = 'pointer';
         checkbox.title = 'Concluir tarefa';
+        checkbox.className = 'task-checkbox';
 
         checkbox.addEventListener('click', () => {
+            let dateText = newCard.querySelector('.meta-info small:nth-child(1)')?.getAttribute('data-date') || "";
+            const [day, month, year] = dateText.split('/');
+            if(day && month && year) {
+                dateText = `${year}-${month}-${day}`
+            }
+            const timeText = newCard.querySelector('.meta-info small:nth-child(2)')?.textContent?.replace('⏰ ', '') || "";
+
             newCard.remove();
-            createdCard(text, 'done');
+            createdCard(text, 'done', dateText, timeText);
             saveToLocalStorage();
         });
 
-        contentContainer.appendChild(checkbox);
+        rightContent.appendChild(checkbox);
     }
 
     if (columnId === 'done') {
         const deleteBtn = createDeleteButton(newCard);
-        contentContainer.appendChild(deleteBtn);
+        rightContent.appendChild(deleteBtn);
     }
 
+    contentContainer.appendChild(rightContent);
     newCard.appendChild(contentContainer);
     document.getElementById(columnId).appendChild(newCard);
     enableDragAndDrop();
