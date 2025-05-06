@@ -305,11 +305,22 @@ footer {
     .task-details {
        display: flex;
        flex-direction: column;
+       align-items: center;
+       gap: 10px;
     }
+
 
     .task-details input,
     .task-details select {
         width: 100%;
+        max-width: 400px;
+    }
+
+    .task-details input[type="date"],
+    .task-details input[type="time"] {
+        appearance: none; /* para Android */
+        -webkit-appearance: none; /* para iOS */
+        text-align: center;
     }
 
 
