@@ -103,6 +103,10 @@ header .slogan {
     border-radius: 6px;
 }
 
+label {
+    display: none;
+}
+
 .add-button {
     align-self: center;
     padding: 10px 20px;
@@ -318,11 +322,27 @@ footer {
 
     .task-details input[type="date"],
     .task-details input[type="time"] {
-        appearance: none; /* para Android */
-        -webkit-appearance: none; /* para iOS */
+        height: 40px;
+        padding: 10px;
+        font-size: 1rem;
         text-align: center;
     }
 
+    .task-details input[type="time"] {
+        margin-bottom: 4px;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9rem;
+        color: #333;
+        margin-bottom: 4px;
+        margin-top: 4px;
+    }
+
+    .input-dateTime {
+        width: 100%;
+    }
 
     .add-button {
         width: 100%;

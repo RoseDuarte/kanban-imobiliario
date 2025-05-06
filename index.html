@@ -23,8 +23,16 @@
                 <input class="task-input" type="text" id="new-task" placeholder="Digite uma nova tarefa...">
                 
                 <div class="task-details">
-                    <input type="date" id="taskDate" placeholder="Data" inputmode="none">
-                    <input type="time" id="taskTime" placeholder="Hora" inputmode="none">
+                    <div class="input-dateTime">
+                        <label for="taskDate">Data:</label>
+                        <input type="date" id="taskDate">
+                    </div>
+                    
+                    <div class="input-dateTime">
+                        <label for="taskTime">Hora:</label>
+                        <input type="time" id="taskTime">
+                    </div>
+                
                     <select id="column-select">
                         <option value="to-do">A fazer</option>
                         <option value="in-progress">Em andamento</option>
