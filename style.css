@@ -103,10 +103,29 @@ header .slogan {
     border-radius: 6px;
 }
 
-
-
 label {
     display: none;
+}
+
+.input-dateTime {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-dateTime input[type="date"],
+.input-dateTime input[type="time"] {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    display: block;
+    font-size: 1rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
 }
 
 .add-button {
@@ -261,17 +280,6 @@ footer {
     box-shadow: 0 0 4px rgba(39, 62, 104, 0.4);
 }
 
-input[type="date"]
-input[type="time"] {
-        width: 100%;
-        height: 40px;
-        padding: 10px;
-        text-align: center;
-        -webkit-appearance: none;
-        appearance: none;
-        box-sizing: border-box;
-    }
-
 
 @media (max-width: 700px) {
 
@@ -340,10 +348,6 @@ input[type="time"] {
         margin-bottom: 4px;
     }
 
-    .input-dateTime {
-        width: 100%;
-    }
-
     .input-dateTime label {
         display: block;
         font-size: 0.9rem;
@@ -351,12 +355,6 @@ input[type="time"] {
         width: 100%;
         margin-bottom: 4px;
         margin-top: 4px;
-    }
-
-    .input-dateTime input {
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
     }
 
 
