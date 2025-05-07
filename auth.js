@@ -66,6 +66,8 @@ if(loginBtn) {
 
         if(storedUser.email === email && storedUser.password === password) {
             localStorage.setItem('loggedIn', 'true');
+            localStorage.setItem('currentUser', email);
+            
             Swal.fire({
                 icon: 'success',
                 title: 'Login realizado!',

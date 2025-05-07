@@ -61,6 +61,7 @@ function enableDragAndDrop() {
 }
 
 enableDragAndDrop();
+loadFromLocalStorage();
 
 const addTaskBtn = document.getElementById('add-task-btn');
 addTaskBtn.addEventListener('click', () => {
@@ -114,17 +115,16 @@ function createdCard(text, columnId, date = '', time = '') {
     if(date) {
         const [year, month, day] = date.split('-');
         const formattedDate = `${day}/${month}/${year}`;
-
         const dateSpan = document.createElement('small');
         dateSpan.textContent = `🗓️ ${formattedDate}`;
         dateSpan.setAttribute('data-date', date);
-
         metaInfo.appendChild(dateSpan);
     }
 
     if(time) {
         const timeSpan = document.createElement('small');
         timeSpan.textContent = `⏰ ${time}`;
+        timeSpan.setAttribute('data-time', time);
         metaInfo.appendChild(timeSpan);
     }
 
@@ -141,15 +141,11 @@ function createdCard(text, columnId, date = '', time = '') {
         checkbox.className = 'task-checkbox';
 
         checkbox.addEventListener('click', () => {
-            let dateText = newCard.querySelector('.meta-info small:nth-child(1)')?.getAttribute('data-date') || "";
-            const [day, month, year] = dateText.split('/');
-            if(day && month && year) {
-                dateText = `${year}-${month}-${day}`
-            }
-            const timeText = newCard.querySelector('.meta-info small:nth-child(2)')?.textContent?.replace('⏰ ', '') || "";
+            const rawDate = newCard.querySelector('.meta-info small:nth-child(1)')?.getAttribute('data-date') || "";
+            const rawTime = newCard.querySelector('.meta-info small:nth-child(2)')?.textContent?.replace('⏰ ', '') || "";
 
             newCard.remove();
-            createdCard(text, 'done', dateText, timeText);
+            createdCard(text, 'done', rawDate, rawTime);
             saveToLocalStorage();
         });
 
@@ -203,36 +199,27 @@ function createDeleteButton(cardElement) {
 }
 
 function saveToLocalStorage() {
-    const data = {
-        "to-do": [],
-        "in-progress": [],
-        "done": []
-    };
+    const taskData = {};
 
     columns.forEach(column => {
         const columnId = column.id;
-        const cards = column.querySelectorAll('.card span');
+        const cards = column.querySelectorAll('.card');
+        taskData[columnId] = [];
+
         cards.forEach(card => {
-            data[columnId].push(card.textContent);
+            const text = card.querySelector('.card-text')?.textContent || '';
+            const date = card.querySelector('small[data-date]')?.getAttribute('data-date') || '';
+            const time = card.querySelector('small[data-time]')?.getAttribute('data-time') || '';
+
+            taskData[columnId].push({ text, date, time });
         });
     });
 
-    localStorage.setItem('kanbanData', JSON.stringify(data));
-}
-
-function loadFromLocalStorage() {
-    const savedData = JSON.parse(localStorage.getItem('kanbanData'));
-
-    if (savedData) {
-        Object.keys(savedData).forEach(columnId => {
-            savedData[columnId].forEach(taskText => {
-                createdCard(taskText, columnId);
-            });
-        });
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+        localStorage.setItem(`tasks_${currentUser}`, JSON.stringify(taskData));
     }
 }
-
-loadFromLocalStorage();
 
 const logoutBtn = document.getElementById('logout-btn');
 if (logoutBtn) {
@@ -247,8 +234,29 @@ if (logoutBtn) {
         }).then((result) => {
             if (result.isConfirmed) {
                 localStorage.removeItem('loggedIn');
+                localStorage.removeItem('currentUser');
                 window.location.href = 'login.html';
             }
         });
     });
+}
+
+function loadFromLocalStorage() {
+    const currentUser = localStorage.getItem('currentUser');
+    if(!currentUser) return;
+
+    const data = JSON.parse(localStorage.getItem(`tasks_${currentUser}`));
+    if(!data) return;
+
+    document.querySelectorAll('.column').forEach(column => {
+        const title = column.querySelector('h2');
+        column.innerHTML = '';
+        column.appendChild(title);
+    });
+
+    for(let columnId in data) {
+        data[columnId].forEach(task => {
+            createdCard(task.text, columnId, task.date, task.time)
+        })
+    }
 }
