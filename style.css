@@ -239,15 +239,12 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* float: right;
-    margin-left: 10px;
-    padding: 0; */
 }
 
 .delete-icon {
     width: 20px;
     height: 20px;
-    transition: filter 0.3 ease;
+    transition: filter 0.3s ease;
 }
 
 .delete-btn:hover .delete-icon {
@@ -312,7 +309,7 @@ footer {
        align-items: center;
        gap: 10px;
     }
-
+    
 
     .task-details input,
     .task-details select {
@@ -320,8 +317,9 @@ footer {
         max-width: 400px;
     }
 
-    .task-details input[type="date"],
-    .task-details input[type="time"] {
+    .input-dateTime input[type="date"],
+    .input-dateTime input[type="time"] {
+        width: 100%;
         height: 40px;
         padding: 10px;
         font-size: 1rem;
@@ -333,6 +331,10 @@ footer {
     }
 
     .input-dateTime {
+        width: 100%;
+    }
+
+    .input-dateTime label {
         display: block;
         font-size: 0.9rem;
         color: #333;
@@ -347,9 +349,6 @@ footer {
         box-sizing: border-box;
     }
 
-    .input-dateTime {
-        width: 100%;
-    }
 
     .column-select {
         padding: 10px;
