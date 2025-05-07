@@ -115,17 +115,15 @@ label {
 
 .input-dateTime input[type="date"],
 .input-dateTime input[type="time"] {
-    width: 100% !important;
-    min-width: 100% !important;
-    max-width: 100% !important;
-    display: block;
-    font-size: 1rem;
+    width: 100%;
+    height: 44px;
     padding: 10px;
+    font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 6px;
+    box-sizing: border-box;
     -webkit-appearance: none;
     appearance: none;
-    box-sizing: border-box;
 }
 
 .add-button {
