@@ -103,6 +103,14 @@ header .slogan {
     border-radius: 6px;
 }
 
+.task-details select {
+    height: 44px; 
+    background-color: #fff;
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+}
+
 label {
     display: none;
 }
@@ -334,7 +342,9 @@ footer {
     }
 
     .task-details select {
+        width: 100%;
         margin-top: 4px;
+        height: 44px;
     }
 
     .task-details input[type="time"] {
