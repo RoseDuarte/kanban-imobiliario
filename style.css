@@ -115,9 +115,10 @@ label {
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 6px;
-    box-sizing: border-box;
     -webkit-appearance: none;
     appearance: none;
+    box-sizing: border-box;
+   background-color: #fff;
 }
 
 .add-button {
