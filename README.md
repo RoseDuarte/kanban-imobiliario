@@ -2,9 +2,13 @@
 
 Plataforma web simples e intuitiva desenvolvida para ajudar corretores de imóveis a organizarem suas tarefas, visitas e negociações utilizando o método ágil **Kanban**.
 
+---
+
 ## Sobre o projeto
 
 Este projeto foi desenvolvido como atividade de extensão do curso de **Engenharia de Software**, com o objetivo de aplicar práticas ágeis (Scrum/Kanban) em uma solução real voltada a profissionais da área imobiliária.
+
+---
 
 ## ✨ Funcionalidades
 
