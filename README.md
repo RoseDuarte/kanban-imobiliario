@@ -12,14 +12,14 @@ Este projeto foi desenvolvido como atividade de extensão do curso de **Engenhar
 
 ## ✨ Funcionalidades
 
-✅ Cadastro e login de corretores (simulado com LocalStorage)
-✅ Quadro Kanban com 3 colunas: A Fazer, Em Andamento e Concluído
-✅ Criação e exclusão de tarefas
-✅ Arraste de cards entre colunas (drag and drop)
-✅ Layout responsivo
-✅ Feedbacks visuais com SweetAlert2
-✅ Armazenamento de tarefas no navegador com **LocalStorage**
-✅ Botão de logout com confirmação
+- Cadastro e login de corretores (simulado com LocalStorage)
+- Quadro Kanban com 3 colunas: A Fazer, Em Andamento e Concluído
+- Criação e exclusão de tarefas
+- Arraste de cards entre colunas (drag and drop)
+- Layout responsivo
+- Feedbacks visuais com SweetAlert2
+- Armazenamento de tarefas no navegador com **LocalStorage**
+- Botão de logout com confirmação
 
 ---
 
